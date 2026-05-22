@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Neural Biome: One Parameter to Rule Them All</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+  <nav class="site-nav">
+    <a href="#intro">notes</a>
+    <a href="#regimes">regimes</a>
+    <a href="https://pub.sakana.ai/digital-ecosystem/">sakana</a>
+    <a href="https://github.com/SakanaAI/digital-ecosystem">source</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO — canvas + φ slider live above the fold
+  ═══════════════════════════════════════════════════ -->
+  <header class="hero">
+    <p class="eyebrow">neural biome</p>
+    <h1>one parameter, six regimes</h1>
+    <p class="subtitle">
+      Multi-agent neural cellular automata — but a single scalar steers<br>
+      every complex-adaptive-system phase documented in nature.
+    </p>
+
+    <!-- Live simulation canvas (64×64 scaled up 4× = 256×256 display) -->
+    <!-- TODO: wire to renderer.js -->
+    <p class="status-note">
+      phase 1 scaffold. φ map, simulation loop, renderer, and population chart are being wired into a small browser experiment.
+    </p>
+
+    <canvas id="nca-canvas" width="64" height="64"></canvas>
+
+    <!-- φ slider -->
+    <div class="phi-control">
+      <div class="phi-track-labels">
+        <!-- TODO: render regime zone labels here dynamically from getWaypoints() -->
+        <!-- e.g. "Frozen | Territorial | Edge | Cooperative | Flicker | Chaotic" -->
+      </div>
+      <input type="range" id="phi-slider" min="0" max="1" step="0.001" value="0.45" />
+      <div class="phi-readout">
+        φ = <span id="phi-value">0.45</span>
+        &nbsp;→&nbsp;
+        <span id="regime-label" class="regime-badge">Edge of Chaos</span>
+      </div>
+    </div>
+
+    <p id="regime-description" class="regime-desc">
+      <!-- TODO: update dynamically from phiToParams(phi).description -->
+    </p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════
+       POPULATION TIMELINE
+  ═══════════════════════════════════════════════════ -->
+  <section class="chart-section">
+    <canvas id="chart-canvas" width="800" height="140"></canvas>
+    <!-- TODO: wire to chart.js — stacked area + Shannon diversity sparkline -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       ARTICLE BODY
+  ═══════════════════════════════════════════════════ -->
+  <article>
+
+    <section id="intro">
+      <h2>The Question</h2>
+      <!-- TODO: write intro — what the Sakana paper found, what this project asks -->
+      <!-- Key point: the paper has 40+ parameters and 5 separate case studies.
+           We ask: is there a single φ that traverses ALL of them? -->
+    </section>
+
+    <section id="regimes">
+      <h2>The Six Regimes</h2>
+      <!-- TODO: one subsection per regime — frozen / territorial / edge / cooperative / flicker / chaotic
+           Each subsection has:
+             - a short description
+             - the parameter tuple { kGate, tau, threshold } that produces it
+             - a "jump to φ=X" button that snaps the slider
+      -->
+    </section>
+
+    <section id="single-param">
+      <h2>Can One Number Do It All?</h2>
+      <!-- TODO: explain the φ mapping — what it interpolates, where it breaks down
+           Honest about limitations: cooperation is path-dependent, may not appear
+           cleanly on a smooth 1D axis -->
+
+      <!-- TODO: embed a small "regime phase space" widget here —
+           2D heatmap of (kGate × tau) with threshold fixed, showing which behaviors
+           live where. φ traces a path through this space. -->
+    </section>
+
+    <section id="phase2">
+      <h2>Phase 2: Learning the Attack/Defense Vectors</h2>
+      <!-- TODO: explain the TF.js upgrade path —
+           right now attack/defense are fixed per species.
+           In Phase 2, each cell carries learned vectors updated by backprop.
+           Show the TF.js architecture diagram here. -->
+    </section>
+
+    <section id="conclusion">
+      <h2>What φ Tells Us</h2>
+      <!-- TODO: write conclusion — what this demo does and doesn't prove.
+           Does cooperation always fall on the same axis as chaos?
+           Is the breakdown itself the interesting finding? -->
+    </section>
+
+  </article>
+
+  <footer>
+    <p>
+      Built on <a href="https://pub.sakana.ai/digital-ecosystem/">Digital Ecosystems</a> by Luke Darlow (Sakana AI, 2026).
+      Source: <a href="https://github.com/SakanaAI/digital-ecosystem">github.com/SakanaAI/digital-ecosystem</a>.
+    </p>
+  </footer>
+
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
